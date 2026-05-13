@@ -30,9 +30,9 @@ onMounted(() => {
   <el-alert :closable="false">
     <template #title>
       <div w-268px>
-        <el-tooltip content="可点击或拖拽进行设置" placement="top-start">
+        <el-tooltip content="クリックまたはドラッグで設定" placement="top-start">
           <span>
-            主页设置
+            ホーム設定
           </span>
         </el-tooltip>
       </div>
@@ -56,29 +56,29 @@ onMounted(() => {
     <template #title>
       <div w-268px flex items-center justify-between gap-2>
         <div>
-          弹窗通知
+          ポップアップ通知
         </div>
         <VolumeControl />
       </div>
     </template>
   </el-alert>
   <div flex flex-col pl-5>
-    <el-checkbox v-model="notificationSetting.battleWin" label="战斗结束提醒" />
-    <el-checkbox v-model="notificationSetting.battleLose" label="队伍全灭提醒" />
-    <el-checkbox v-model="notificationSetting.replicardEvent" label="沙盒宝箱提醒" />
-    <el-checkbox v-model="notificationSetting.appearanceQuest" label="Hell提醒" />
-    <el-checkbox v-model="notificationSetting.itemGoal" label="底部道具数量达到目标" />
-    <el-checkbox v-model="notificationSetting.sampoFinish" label="探险完成提醒" />
-    <el-checkbox v-model="notificationSetting.checkUpdate" label="检测版本更新" />
-    <el-checkbox v-model="notificationSetting.pointReach" label="到线提醒" />
-    <el-checkbox v-model="notificationSetting.actionTrigger" label="动作触发提醒" />
+    <el-checkbox v-model="notificationSetting.battleWin" label="戦闘終了通知" />
+    <el-checkbox v-model="notificationSetting.battleLose" label="全滅通知" />
+    <el-checkbox v-model="notificationSetting.replicardEvent" label="砂箱宝箱通知" />
+    <el-checkbox v-model="notificationSetting.appearanceQuest" label="HELL出現通知" />
+    <el-checkbox v-model="notificationSetting.itemGoal" label="アイテム目標数達成通知" />
+    <el-checkbox v-model="notificationSetting.sampoFinish" label="探検完了通知" />
+    <el-checkbox v-model="notificationSetting.checkUpdate" label="アップデート確認" />
+    <el-checkbox v-model="notificationSetting.pointReach" label="ライン到達通知" />
+    <el-checkbox v-model="notificationSetting.actionTrigger" label="アクション実行通知" />
   </div>
   <el-alert :closable="false">
     <template #title>
       <div w-268px flex items-center justify-between gap-2>
-        <el-tooltip content="在道具图片上右键加入掉落监控" placement="top-start">
+        <el-tooltip content="アイテム画像を右クリックしてドロップ監視に追加" placement="top-start">
           <div>
-            掉落提醒
+            ドロップ通知
           </div>
         </el-tooltip>
         <el-switch v-model="notificationSetting.targetItemDrop" />
@@ -98,9 +98,9 @@ onMounted(() => {
   <el-alert :closable="false">
     <template #title>
       <div w-268px>
-        <el-tooltip content="点击配置查询中的角色进行设置" placement="top-start">
+        <el-tooltip content="構成比較内のキャラをクリックして設定" placement="top-start">
           <span>
-            未拥有角色
+            未所持キャラ
           </span>
         </el-tooltip>
       </div>

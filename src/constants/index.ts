@@ -34,13 +34,13 @@ export const notificationSound = {
 }
 
 export const defaultWidget = [
-  { key: 'StoneCount', name: '抽卡资源', visible: true },
-  { key: 'Status', name: '点数资源', visible: true },
-  { key: 'Event', name: '活动信息', visible: true },
-  { key: 'TreasureMonitor', name: '素材监控', visible: true },
-  { key: 'DailyCost', name: '每日统计', visible: true },
-  { key: 'SkipQuest', name: '扫荡副本', visible: true },
-  { key: 'Sampo', name: '探险队', visible: true },
+  { key: 'StoneCount', name: 'ガチャリソース', visible: true },
+  { key: 'Status', name: '輝き・ポイント', visible: true },
+  { key: 'Event', name: 'イベント情報', visible: true },
+  { key: 'TreasureMonitor', name: '素材監視', visible: true },
+  { key: 'DailyCost', name: 'デイリー統計', visible: true },
+  { key: 'SkipQuest', name: 'スキップクエスト', visible: true },
+  { key: 'Sampo', name: '探検隊', visible: true },
 ]
 
 export const defaultCombatPanelSetting: CombatPanelSetting = {
