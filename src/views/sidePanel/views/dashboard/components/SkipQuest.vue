@@ -15,7 +15,7 @@ function handleClick(quest: typeof skipQuest.value.list[number]) {
     <template #header>
       <div flex justify-between>
         <div>
-          スキップクエスト
+          Proクエスト
         </div>
         <el-tooltip v-if="skipQuest.updateTime" content="最終更新日時" placement="top">
           {{ formatEventDate(skipQuest.updateTime) }}
@@ -23,7 +23,7 @@ function handleClick(quest: typeof skipQuest.value.list[number]) {
       </div>
     </template>
     <template v-if="skipQuest.list.length">
-      <el-alert v-if="skipQuest.list.every(item => item.limitedCount === 0)" title="本日のスキップ回数が上限に達しました" type="success" :center="true" :closable="false" />
+      <el-alert v-if="skipQuest.list.every(item => item.limitedCount === 0)" title="本日のProクエストはすべて完了しています" type="success" :center="true" :closable="false" />
       <div v-else flex flex-wrap gap-10px>
         <div v-for="quest in skipQuest.list" :key="quest.questId" relative w-62px cursor-pointer @click="handleClick(quest)">
           <div v-if="quest.limitedCount === 0" class="absolute h-full w-full fc bg-black/40">
@@ -36,6 +36,6 @@ function handleClick(quest: typeof skipQuest.value.list[number]) {
         </div>
       </div>
     </template>
-    <el-alert v-else title="スキップクエストの情報を取得してください" type="info" :center="true" :closable="false" />
+    <el-alert v-else title="Proクエストの情報を取得してください" type="info" :center="true" :closable="false" />
   </el-card>
 </template>
