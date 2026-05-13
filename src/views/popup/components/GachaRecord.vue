@@ -28,15 +28,15 @@ function handleDelete(index: number) {
             武器
           </ElCheckboxButton>
           <ElCheckboxButton value="summon">
-            召唤
+            召喚
           </ElCheckboxButton>
         </ElCheckboxGroup>
       </div>
       <ElTag v-if="summary.count" effect="dark" size="large" round>
-        {{ `总抽数: ${summary.count}(${summary.ssrNum}) SSR率: ${(summary.ssrNum / summary.count * 100).toFixed(1)}%` }}
+        {{ `総ガチャ数: ${summary.count}(${summary.ssrNum}) SSR率: ${(summary.ssrNum / summary.count * 100).toFixed(1)}%` }}
       </ElTag>
       <ElTag v-else type="info" effect="dark" size="large" round>
-        当前没有抽卡信息
+        ガチャ履歴がありません
       </ElTag>
     </div>
     <ElScrollbar :max-height="height - 100">
@@ -47,12 +47,12 @@ function handleDelete(index: number) {
               <div fc gap-4>
                 <img w-200px :src="getGachaBanner(data.random_key)">
                 <TheButton class="invisible group-hover:visible" @click="handleDelete(index)">
-                  删除
+                  削除
                 </TheButton>
               </div>
               <div flex flex-col items-end justify-center gap-10px>
                 <div>{{ `${data.service_start} - ${data.service_end}` }}</div>
-                <div>{{ `已抽: ${data.count}(${data.ssrList.length}) SSR率: ${(data.ssrList.length / data.count * 100).toFixed(1)}%` }}</div>
+                <div>{{ `ガチャ数: ${data.count}(${data.ssrList.length}) SSR率: ${(data.ssrList.length / data.count * 100).toFixed(1)}%` }}</div>
               </div>
             </div>
           </template>
@@ -68,7 +68,7 @@ function handleDelete(index: number) {
             </div>
             <div w-full fc>
               <ElTag v-if="data.ssrList.length === 0" type="info" effect="dark" round>
-                未抽到SSR
+                SSR未排出
               </ElTag>
             </div>
           </div>

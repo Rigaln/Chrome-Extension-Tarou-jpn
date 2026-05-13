@@ -16,7 +16,7 @@ function handleCommand(command: 'get' | 'set' | 'copy' | 'reset') {
           text.value = result[key.value]
         }
         finally {
-          ElMessage.success('获取成功')
+          ElMessage.success('取得完了')
         }
       })
       break
@@ -24,20 +24,20 @@ function handleCommand(command: 'get' | 'set' | 'copy' | 'reset') {
       try {
         console.log(JSON.parse(text.value))
         chrome.storage.local.set({ [key.value]: text.value }).then(() => {
-          ElMessage.success('更新成功')
+          ElMessage.success('更新完了')
         })
       }
       catch (error) {
-        ElMessage.error('数据不合法')
+        ElMessage.error('データ形式が不正です')
       }
       break
     case 'copy':
       if (copy(text.value))
-        ElMessage.success(`复制成功`)
+        ElMessage.success(`コピーしました`)
       break
     case 'reset':
       chrome.storage.local.remove(key.value).then(() => {
-        ElMessage.success('重置成功')
+        ElMessage.success('リセット完了')
         handleCommand('get')
       })
       break
@@ -55,7 +55,7 @@ onMounted(() => {
   <div fc flex-wrap gap-3 p-10>
     <div h-600px w-500px>
       <el-alert type="error" :closable="false" center>
-        调试用功能，不要随意操作！
+        デバッグ機能です。不用意に操作しないでください！
       </el-alert>
       <div mt-2 fc gap-2 p-2>
         <el-select v-model="key" style="width: 200px" placeholder="" size="small" filterable @change="handleCommand('get')">
@@ -66,10 +66,10 @@ onMounted(() => {
           更新
         </TheButton>
         <TheButton @click="handleCommand('copy')">
-          复制
+          コピー
         </TheButton>
         <TheButton @click="handleCommand('reset')">
-          重置
+          リセット
         </TheButton>
       </div>
 

@@ -7,8 +7,8 @@ const tabName = ref('skill1')
 const ruleName = ref('')
 const ruleInfo = ref<ArtifactRuleInfo>()
 const skillTabs: ('skill1' | 'skill2' | 'skill3')[] = ['skill1', 'skill2', 'skill3']
-const attrList = ['火', '水', '土', '风', '光', '暗']
-const kindList = ['剑', '短', '枪', '斧', '杖', '铳', '拳', '弓', '琴', '刀']
+const attrList = ['火', '水', '土', '風', '光', '闇']
+const kindList = ['剣', '短剣', '槍', '斧', '杖', '銃', '格闘', '弓', '楽器', '刀']
 
 const extraList = ref<Partial<ExtraRule>[]>([])
 
@@ -60,22 +60,22 @@ onMounted(() => {
     <template #header>
       <div flex items-center justify-between>
         <div fc gap-2>
-          <div>规则名称: </div>
+          <div>ルール名称: </div>
           <el-input v-model="ruleName" style="width: 150px;" size="small" />
         </div>
         <div fc>
           <TheButton color="#3c3c3c" @click="handleCancel">
-            取消
+            キャンセル
           </TheButton>
           <TheButton @click="onSubmit">
-            确认
+            保存
           </TheButton>
         </div>
       </div>
     </template>
     <div v-if="ruleInfo" m-auto h-500px w-550px border-1 class="border-#4C4D4F" rounded-lg>
       <el-tabs v-model="tabName" tab-position="left" h-full>
-        <el-tab-pane v-for="tab, i in skillTabs" :key="tab" :label="`${'I'.repeat(i + 1)}类技能`" :name="tab">
+        <el-tab-pane v-for="tab, i in skillTabs" :key="tab" :label="`${'I'.repeat(i + 1)}類スキル`" :name="tab">
           <div h-500px flex flex-col gap-2 overflow-auto>
             <div v-for="skill in artifactSkillList[tab]" :key="skill.skillId" flex justify-between border-b-1 class="border-#4C4D4F" p-2>
               <div w-300px text-sm>
@@ -94,7 +94,7 @@ onMounted(() => {
           </div>
         </el-tab-pane>
 
-        <el-tab-pane label="额外权重" name="extra">
+        <el-tab-pane label="追加ウェイト" name="extra">
           <el-scrollbar height="460" pr-1>
             <el-form :inline="true" size="small" label-width="40">
               <div flex flex-col gap-2 py-2 pr-2>
@@ -104,13 +104,13 @@ onMounted(() => {
                       <el-option v-for="item, idx in attrList" :key="item" :value="String(idx + 1)" :label="item" />
                     </el-select>
                   </el-form-item>
-                  <el-form-item label="类型">
+                  <el-form-item label="タイプ">
                     <el-select v-model="extra.kind" style="width: 55px;" placeholder="">
                       <el-option v-for="item, idx in kindList" :key="item" :value="String(idx + 1).padStart(2, '0')" :label="item" />
                     </el-select>
                   </el-form-item>
 
-                  <el-form-item label="权重">
+                  <el-form-item label="ウェイト">
                     <el-input-number
                       v-model="extra.value"
                       :min="1"
@@ -120,7 +120,7 @@ onMounted(() => {
                     />
                   </el-form-item>
 
-                  <el-form-item label="技能">
+                  <el-form-item label="スキル">
                     <el-select v-model="extra.skillId" style="width: 250px;" filterable placeholder="">
                       <el-option-group
                         v-for="skillType in Object.keys(artifactSkillList)"
@@ -153,12 +153,12 @@ onMounted(() => {
           </el-scrollbar>
           <div mb-2 pl--10px pr-10px>
             <TheButton w-full text-center size="default" @click="handleAdd(extraList.length)">
-              新增额外权重
+              追加ウェイトを新規作成
             </TheButton>
           </div>
         </el-tab-pane>
 
-        <el-tab-pane label="基础权重" name="base">
+        <el-tab-pane label="基本ウェイト" name="base">
           <div flex pl-4>
             <div class="w-50%">
               <div my-2 font-bold>
@@ -179,7 +179,7 @@ onMounted(() => {
             </div>
             <div class="w-50%">
               <div my-2 font-bold>
-                类型
+                タイプ
               </div>
               <div flex flex-col gap-4>
                 <div v-for="value, key in ruleInfo.kind" :key="key" flex gap-2>
@@ -197,11 +197,11 @@ onMounted(() => {
           </div>
         </el-tab-pane>
 
-        <el-tab-pane label="高亮" name="highlight">
+        <el-tab-pane label="ハイライト" name="highlight">
           <div flex flex-col gap-2 p-4>
             <div flex gap-2>
               <div>
-                低分高亮
+                低スコアハイライト
               </div>
               <el-input-number
                 v-model="ruleInfo.highlight.low"
@@ -213,7 +213,7 @@ onMounted(() => {
             </div>
             <div flex gap-2>
               <div>
-                高分高亮
+                高スコアハイライト
               </div>
               <el-input-number
                 v-model="ruleInfo.highlight.high"

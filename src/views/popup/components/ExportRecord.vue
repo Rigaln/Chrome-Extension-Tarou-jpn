@@ -14,8 +14,8 @@ async function exportToImg() {
   try {
     const element = document.querySelector(`#record-container`)!
     const result = await snapdom(element)
-    await result.download({ scale: 1.5, type: 'png', filename: `战斗记录${Date.now()}`, backgroundColor: '#131313' })
-    ElMessage.success('保存成功')
+    await result.download({ scale: 1.5, type: 'png', filename: `バトル記録${Date.now()}`, backgroundColor: '#131313' })
+    ElMessage.success('保存しました')
   }
   catch (error) {
     createNotification({ message: String(error) })
@@ -32,19 +32,19 @@ async function exportToImg() {
       <div flex flex-col gap-10px>
         <el-card w-300px body-style="padding: 5px !important">
           <el-descriptions size="small" direction="vertical" :column="3" border>
-            <el-descriptions-item label="副本" label-width="60" :rowspan="2" align="center">
+            <el-descriptions-item label="クエスト" label-width="60" :rowspan="2" align="center">
               <img h-44px w-44px :src="getBossImg('enemy', battleExportData.bossImage!, 's')">
             </el-descriptions-item>
-            <el-descriptions-item label="伤害" label-width="113" align="center">
+            <el-descriptions-item label="合計ダメージ" label-width="113" align="center">
               {{ battleExportData.damage }}
             </el-descriptions-item>
-            <el-descriptions-item label="操作时长/跑速" align="center">
+            <el-descriptions-item label="経過時間/速度" align="center">
               {{ battleExportData.realSpeed }}
             </el-descriptions-item>
-            <el-descriptions-item label="贡献" align="center">
+            <el-descriptions-item label="貢献度" align="center">
               {{ battleExportData.point ? Math.floor(battleExportData.point).toLocaleString() : '-' }}
             </el-descriptions-item>
-            <el-descriptions-item label="回合数" align="center">
+            <el-descriptions-item label="ターン数" align="center">
               {{ battleExportData.turn }}
             </el-descriptions-item>
           </el-descriptions>

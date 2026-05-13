@@ -39,7 +39,7 @@ import { userInfo } from '~/logic'
             ID: {{ userInfo.uid }}
           </div>
           <div>
-            昵称: {{ userInfo.name }}
+            名前: {{ userInfo.name }}
           </div>
         </div>
       </div>

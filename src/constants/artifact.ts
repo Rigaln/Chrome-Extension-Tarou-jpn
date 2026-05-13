@@ -73,7 +73,7 @@ const defaultArtifactRule = {
 }
 
 export const defaultArtifactRuleList: ArtifactRule[] = Array.from({ length: 6 }, (_, i) => ({
-  name: `规则${i + 1}`,
+  name: `ルール${i + 1}`,
   info: deepClone(defaultArtifactRule),
 }))
 

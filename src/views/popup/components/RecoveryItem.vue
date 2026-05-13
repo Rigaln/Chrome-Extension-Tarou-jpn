@@ -52,7 +52,7 @@ const labels = computed(() => {
 
 const series = computed(() => {
   const res: (SeriesOption & { data: (number | null)[] })[] = [{
-    name: '大红',
+    name: 'エリクシール',
     data: [],
     type: 'line',
     symbolSize: 3,
@@ -60,7 +60,7 @@ const series = computed(() => {
     itemStyle: { color: 'rgb(185,28,28)' },
     connectNulls: true,
   }, {
-    name: '小红',
+    name: 'エリクシールハーフ',
     data: [],
     type: 'line',
     symbolSize: 3,
@@ -68,7 +68,7 @@ const series = computed(() => {
     itemStyle: { color: 'rgb(248,113,113)' },
     connectNulls: true,
   }, {
-    name: '粉盒',
+    name: 'ソウルパウダー',
     data: [],
     type: 'line',
     symbolSize: 3,
@@ -76,7 +76,7 @@ const series = computed(() => {
     itemStyle: { color: 'rgb(126,34,206)' },
     connectNulls: true,
   }, {
-    name: '豆子',
+    name: 'ソウルシード',
     data: [],
     type: 'line',
     symbolSize: 3,
@@ -100,7 +100,7 @@ const series = computed(() => {
 
 const option = computed<EChartsOption>(() => ({
   legend: {
-    data: ['大红', '小红', '粉盒', '豆子'],
+    data: ['エリクシール', 'エリクシールハーフ', 'ソウルパウダー', 'ソウルシード'],
     icon: 'roundRect',
     textStyle: {
       color: 'grey',
@@ -153,25 +153,25 @@ onMounted(() => {
       <template #header>
         <div flex justify-between>
           <div text-lg>
-            回复道具记录
+            回復アイテム履歴
           </div>
           <div>
             <ElButton type="danger" link @click="reset">
-              重置
+              リセット
             </ElButton>
             <ElButton type="primary" link @click="handleCopy">
-              复制
+              コピー
             </ElButton>
           </div>
         </div>
       </template>
       <ElTable :data="recoveryItemList" style="width: 800px" cell-class-name="cell-class-name" max-height="400">
-        <ElTableColumn prop="timeStamp" label="日期" align="center" width="120">
+        <ElTableColumn prop="timeStamp" label="日付" align="center" width="120">
           <template #default="{ row }">
             {{ dayjs(row.timeStamp).format("YYYY-MM-DD") }}
           </template>
         </ElTableColumn>
-        <ElTableColumn label="大红" align="center">
+        <ElTableColumn label="エリクシール" align="center">
           <template #default="{ row }">
             <ElBadge
               :value="(row.fullElixirDiff >= 0 ? '+' : '') + row.fullElixirDiff"
@@ -183,7 +183,7 @@ onMounted(() => {
             </ElBadge>
           </template>
         </ElTableColumn>
-        <ElTableColumn label="半红" align="center">
+        <ElTableColumn label="エリクシールハーフ" align="center">
           <template #default="{ row }">
             <ElBadge
               :value="(row.halfElixirDiff >= 0 ? '+' : '') + row.halfElixirDiff"
@@ -195,7 +195,7 @@ onMounted(() => {
             </ElBadge>
           </template>
         </ElTableColumn>
-        <ElTableColumn label="粉盒" align="center">
+        <ElTableColumn label="ソウルパウダー" align="center">
           <template #default="{ row }">
             <ElBadge
               :value="(row.soulBalmDiff >= 0 ? '+' : '') + row.soulBalmDiff"
@@ -207,7 +207,7 @@ onMounted(() => {
             </ElBadge>
           </template>
         </ElTableColumn>
-        <ElTableColumn label="豆子" align="center">
+        <ElTableColumn label="ソウルシード" align="center">
           <template #default="{ row }">
             <ElBadge
               :value="(row.soulBerryDiff >= 0 ? '+' : '') + row.soulBerryDiff"

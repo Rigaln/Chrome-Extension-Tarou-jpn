@@ -4,11 +4,11 @@ import { sampoSetup } from '~/logic'
 const imgUri = 'https://prd-game-a-granbluefantasy.akamaized.net/assets/img/sp'
 
 const ParamEnum = {
-  power: { key: 'power', label: '战斗', id: 1 },
-  observation: { key: 'observation', label: '观察', id: 3 },
+  power: { key: 'power', label: 'パワー', id: 1 },
+  observation: { key: 'observation', label: '観察', id: 3 },
   endurance: { key: 'endurance', label: '忍耐', id: 2 },
-  charm: { key: 'charm', label: '爱娇', id: 4 },
-  luck: { key: 'luck', label: '幸运', id: 5 },
+  charm: { key: 'charm', label: '愛嬌', id: 4 },
+  luck: { key: 'luck', label: '幸運', id: 5 },
 } as const
 
 const conditionCount = ref(5)
@@ -102,7 +102,7 @@ const showRes = computed(() => res.value.filter(item => item.conditionCount === 
 <template>
   <div fc flex-col gap-3>
     <div mx-auto w-450px>
-      <el-alert title="获取装备数据需要清空当前地图配置的队员和装备" type="warning" :center="true" :closable="false" />
+      <el-alert title="装備データを取得するには、現在のエリア編成（隊員・装備）を空にする必要があります" type="warning" :center="true" :closable="false" />
     </div>
     <div flex>
       <div v-if="sampoSetup.captain" w-35 fc>
@@ -125,19 +125,19 @@ const showRes = computed(() => res.value.filter(item => item.conditionCount === 
           <div w-250px fc flex-wrap gap-2>
             <div v-for="i in 4" :key="i" w-120px>
               <el-button :type="conditionCount === i ? 'primary' : 'default'" size="small" plain link @click="conditionCount = i">
-                {{ `满足${i}种条件(${res.filter(item => item.conditionCount >= i).length})` }}
+                {{ `${i}つの条件を満たす(${res.filter(item => item.conditionCount >= i).length})` }}
               </el-button>
             </div>
           </div>
           <div>
             <el-button :type="conditionCount === 5 ? 'primary' : 'default'" size="small" plain link @click="conditionCount = 5">
-              {{ `满足全部条件(${res.filter(item => item.conditionCount === 5).length})` }}
+              {{ `すべての条件を満たす(${res.filter(item => item.conditionCount === 5).length})` }}
             </el-button>
           </div>
         </div>
       </div>
       <div fc gap-2 class="sampo-filter">
-        <el-select v-model="filter.crew" placeholder="选择队员" style="width: 280px;" multiple :multiple-limit="2" clearable popper-class="sampo-filter-popper">
+        <el-select v-model="filter.crew" placeholder="隊員を選択" style="width: 280px;" multiple :multiple-limit="2" clearable popper-class="sampo-filter-popper">
           <el-option
             v-for="item in sampoSetup.crew"
             :key="item.id"
@@ -151,7 +151,7 @@ const showRes = computed(() => res.value.filter(item => item.conditionCount === 
           </template>
         </el-select>
 
-        <el-select v-model="filter.slot1" placeholder="选择头部" style="width: 110px" clearable popper-class="sampo-filter-popper">
+        <el-select v-model="filter.slot1" placeholder="あたまを選択" style="width: 110px" clearable popper-class="sampo-filter-popper">
           <el-option
             v-for="item in currentArea.equip.filter(p => p.slot === 1)"
             :key="item.id"
@@ -166,7 +166,7 @@ const showRes = computed(() => res.value.filter(item => item.conditionCount === 
           </template>
         </el-select>
 
-        <el-select v-model="filter.slot2" placeholder="选择武器" style="width: 110px" clearable popper-class="sampo-filter-popper">
+        <el-select v-model="filter.slot2" placeholder="ぶきを選択" style="width: 110px" clearable popper-class="sampo-filter-popper">
           <el-option
             v-for="item in currentArea.equip.filter(p => p.slot === 2)"
             :key="item.id"
@@ -183,7 +183,7 @@ const showRes = computed(() => res.value.filter(item => item.conditionCount === 
     </div>
 
     <div v-if="showRes.length === 0 && sampoSetup.area" mx-auto mt-10 w-450px>
-      <el-alert title="没有满足条件的组合" type="info" :center="true" :closable="false" />
+      <el-alert title="条件を満たす組み合わせがありません" type="info" :center="true" :closable="false" />
     </div>
 
     <el-scrollbar v-else px-5 max-height="400">
