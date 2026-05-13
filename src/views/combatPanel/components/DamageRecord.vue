@@ -8,15 +8,15 @@ const playerInfo = computed(() => battleRecord.value.find(record => String(recor
 const handle = useTemplateRef<HTMLElement>('handle')
 type DamageType = 'total' | 'attack' | 'ability' | 'special' | 'other'
 const damageTypeOptions = [
-  { value: 'attack', label: '通常攻击&反击' },
-  { value: 'ability', label: '技能伤害' },
-  { value: 'special', label: '奥义伤害' },
-  { value: 'other', label: '其他' },
-  { value: 'total', label: '总计' },
+  { value: 'attack', label: '通常攻撃・反撃' },
+  { value: 'ability', label: 'アビリティダメージ' },
+  { value: 'special', label: '奥義ダメージ' },
+  { value: 'other', label: 'その他' },
+  { value: 'total', label: '合計' },
 ] as const
 
 const damageType = ref<DamageType>('total')
-const damageTypeDesc = computed(() => damageTypeOptions.find(item => item.value === damageType.value)?.label || '总计')
+const damageTypeDesc = computed(() => damageTypeOptions.find(item => item.value === damageType.value)?.label || '合計')
 const maxDamage = computed(() =>
   playerInfo.value.reduce((pre, cur) => pre > cur.damage[damageType.value].value
     ? pre
@@ -64,7 +64,7 @@ function handleCommand(command: DamageType) {
       :class="{ 'cursor-grabbing': isDragging, 'cursor-grab': !isDragging }"
     >
       <div ref="handle" flex-1>
-        伤害: {{ damageTypeDesc }}
+        ダメージ: {{ damageTypeDesc }}
       </div>
 
       <el-dropdown placement="top" size="small" @command="handleCommand">

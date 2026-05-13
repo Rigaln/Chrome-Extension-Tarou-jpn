@@ -22,9 +22,9 @@ watch(artifactUsage, () => {
 const romanNumeral = ['I', 'II', 'III']
 
 const typeList = [
-  { value: 'danger', label: '低分' },
+  { value: 'danger', label: '低スコア' },
   { value: 'warning', label: '普通' },
-  { value: 'success', label: '高分' },
+  { value: 'success', label: '高スコア' },
 ]
 
 function handleCheckFilter(list: Set<any>, value: any) {
@@ -49,7 +49,7 @@ function handleCommand(command: string | number | object) {
       break
     case 'copy':
       if (copy(JSON.stringify(currentArtifactRuleInfo.value)))
-        ElMessage.success(`已复制当前权重规则`)
+        ElMessage.success(`現在のウェイトルールをコピーしました`)
       break
     case 'paste':
       textarea.value = ''
@@ -73,11 +73,11 @@ function onPasteSubmit() {
   try {
     artifactRuleList.value[artifactRuleIndex.value].info = JSON.parse(textarea.value)
     inputVisible.value = false
-    ElMessage.success('导入成功')
+    ElMessage.success('インポート完了')
   }
   catch (error: any) {
     console.log(error)
-    ElMessage.error('数据异常，复制失败')
+    ElMessage.error('データ異常：インポート失敗')
   }
 }
 </script>
@@ -94,8 +94,8 @@ function onPasteSubmit() {
 
             <el-popover trigger="click" effect="dark" placement="bottom" width="320" popper-style="padding: 0px;">
               <template #reference>
-                <TheButton title="筛选神器技能">
-                  筛选
+                <TheButton title="神器スキルを絞り込み">
+                  絞り込み
                 </TheButton>
               </template>
 
@@ -111,9 +111,9 @@ function onPasteSubmit() {
                   </div>
                 </div>
                 <div fc gap-10px>
-                  <el-checkbox v-model="strictMode" label="严格模式" size="small" />
-                  <TheButton title="重置选项" color="#303133" @click="types.clear(); ids.clear(); strictMode = false">
-                    重置
+                  <el-checkbox v-model="strictMode" label="厳格モード" size="small" />
+                  <TheButton title="リセット" color="#303133" @click="types.clear(); ids.clear(); strictMode = false">
+                    リセット
                   </TheButton>
                 </div>
               </div>
@@ -142,27 +142,27 @@ function onPasteSubmit() {
 
           <el-dropdown @command="handleCommand">
             <TheButton>
-              操作
+              メニュー
             </TheButton>
             <template #dropdown>
               <el-dropdown-menu>
                 <el-dropdown-item command="box">
-                  弹窗展示
+                  ポップアップ表示
                 </el-dropdown-item>
                 <el-dropdown-item command="rule">
-                  配置权重
+                  ウェイト設定
                 </el-dropdown-item>
                 <el-dropdown-item command="lang">
-                  切换语言
+                  言語切り替え
                 </el-dropdown-item>
                 <el-dropdown-item command="copy">
-                  复制规则
+                  ルールをコピー
                 </el-dropdown-item>
                 <el-dropdown-item command="paste">
-                  导入规则
+                  ルールをインポート
                 </el-dropdown-item>
                 <el-dropdown-item command="share">
-                  分享
+                  共有 (NGA)
                 </el-dropdown-item>
               </el-dropdown-menu>
             </template>
@@ -197,10 +197,10 @@ function onPasteSubmit() {
       <el-input v-model="textarea" :rows="6" type="textarea" />
       <template #footer>
         <TheButton @click="inputVisible = false">
-          取消
+          キャンセル
         </TheButton>
         <TheButton @click="onPasteSubmit">
-          确认
+          確定
         </TheButton>
       </template>
     </el-dialog>
