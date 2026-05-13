@@ -75,21 +75,21 @@ const msg = computed<{ title: string, type: 'error' | 'success' | 'warning' } | 
   const showPoint = Math.abs(diffPoint).toFixed(2)
 
   if (diffPoint > 0 && s1 >= s2)
-    return { type: 'success', title: `领先${showPoint}亿, 稳住!!!` }
+    return { type: 'success', title: `${showPoint}億リード中！この調子！` }
 
   if (diffPoint < 0 && s1 <= s2)
-    return { type: 'error', title: `落后${showPoint}亿, 加油!!!` }
+    return { type: 'error', title: `${showPoint}億ビハインド！頑張って！` }
 
   if (diffPoint > 0 && s1 < s2) {
     const time = (diffPoint / (s2 - s1)).toFixed(2)
-    return { type: 'error', title: `领先${showPoint}亿, ${time}小时后被反超` }
+    return { type: 'error', title: `${showPoint}億リード中、${time}時間後に逆転されます` }
   }
   if (diffPoint < 0 && s1 > s2) {
     const time = (-diffPoint / (s1 - s2)).toFixed(2)
-    return { type: 'success', title: `落后${showPoint}亿, ${time}小时后反超` }
+    return { type: 'success', title: `${showPoint}億ビハインド、${time}時間後に逆転します` }
   }
   if (diffPoint === 0)
-    return { type: 'warning', title: '持平!!!' }
+    return { type: 'warning', title: '同点！' }
 
   return undefined
 })
@@ -108,9 +108,9 @@ const msg = computed<{ title: string, type: 'error' | 'success' | 'warning' } | 
     <LineChart id="lineChart" :labels="labels" :series="series" />
     <el-table :data="tableData" :border="true" mt-10px w-300px :max-height="height - 400">
       <el-table-column prop="time" label="" align="center" width="65" />
-      <el-table-column prop="s1" label="我速" align="center" :formatter="(row, col, value) => Number.isNaN(value) ? '-' : value.toFixed(1) " />
-      <el-table-column prop="s2" label="敌速" align="center" :formatter="(row, col, value) => Number.isNaN(value) ? '-' : value.toFixed(1) " />
+      <el-table-column prop="s1" label="自団速" align="center" :formatter="(row, col, value) => Number.isNaN(value) ? '-' : value.toFixed(1) " />
+      <el-table-column prop="s2" label="相手速" align="center" :formatter="(row, col, value) => Number.isNaN(value) ? '-' : value.toFixed(1) " />
     </el-table>
   </div>
-  <el-result v-else icon="info" sub-title="还未获取数据" />
+  <el-result v-else icon="info" sub-title="データ未取得" />
 </template>
