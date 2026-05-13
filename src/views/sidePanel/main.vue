@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import zhCn from 'element-plus/es/locale/lang/zh-cn'
+import ja from 'element-plus/es/locale/lang/ja'
 import { eventList, obTabId } from '~/logic'
 
 const componentMap: Record<string, Component> = (() => {
@@ -21,21 +21,21 @@ const tabId = computed(() => Number(document.URL.split('?')[1]))
 const inBattle = computed(() => eventList.value.find(e => e.type === 'teamraid')?.isActive)
 
 const upViewList = computed(() => [
-  { key: 'dashboard', label: '主页', icon: 'material-symbols:dashboard' },
-  { key: 'drop', label: '掉落统计', icon: 'game-icons:gold-stack' },
-  { key: 'artifact', label: '神器甄选', icon: 'game-icons:glowing-artifact' },
-  { key: 'party', label: '队伍信息', icon: 'ri:team-fill' },
-  { key: 'build', label: '配置查询', icon: 'material-symbols:document-search' },
-  { key: 'combat', label: '战斗信息', icon: 'game-icons:battle-axe' },
-  { key: 'history', label: '战斗记录', icon: 'game-icons:scroll-unfurled' },
-  { key: 'patient', label: '标记玩家', icon: 'material-symbols:patient-list' },
-  { key: 'gacha', label: '抽卡模拟', icon: 'game-icons:mimic-chest' },
-  { key: 'battle', label: '接战', icon: 'game-icons:crossed-swords', hidden: !inBattle.value },
+  { key: 'dashboard', label: 'ダッシュボード', icon: 'material-symbols:dashboard' },
+  { key: 'drop', label: 'ドロップ統計', icon: 'game-icons:gold-stack' },
+  { key: 'artifact', label: 'アーティファクト', icon: 'game-icons:glowing-artifact' },
+  { key: 'party', label: 'パーティ情報', icon: 'ri:team-fill' },
+  { key: 'build', label: '構成検索', icon: 'material-symbols:document-search' },
+  { key: 'combat', label: 'バトル情報', icon: 'game-icons:battle-axe' },
+  { key: 'history', label: 'バトル履歴', icon: 'game-icons:scroll-unfurled' },
+  { key: 'patient', label: 'ブックマーク', icon: 'material-symbols:patient-list' },
+  { key: 'gacha', label: 'ガチャシミュ', icon: 'game-icons:mimic-chest' },
+  { key: 'battle', label: '接戦', icon: 'game-icons:crossed-swords', hidden: !inBattle.value },
 ].filter(m => !m.hidden))
 
 const downViewList = [
-  { key: 'info', label: '用户信息', icon: 'carbon:information-filled' },
-  { key: 'setting', label: '设置', icon: 'carbon:settings' },
+  { key: 'info', label: 'ユーザー情報', icon: 'carbon:information-filled' },
+  { key: 'setting', label: '設定', icon: 'carbon:settings' },
 ]
 
 watchEffect(() => {
@@ -53,7 +53,7 @@ watchEffect(() => {
 onMounted(() => {
   chrome.runtime.getContexts({}).then((ctx) => {
     if (ctx.filter(c => c.documentUrl?.includes('src/views/sidePanel/main.html')).length > 1) {
-      createNotification({ message: '只能打开一个侧边栏' })
+      createNotification({ message: 'サイドパネルは複数開けません' })
       window.close()
       return
     }
@@ -71,7 +71,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <el-config-provider :locale="zhCn">
+  <el-config-provider :locale="ja">
     <div id="content" h-full w-full flex>
       <el-scrollbar w-full>
         <div p-10px>

@@ -52,7 +52,7 @@ export function checkActionTrigger(action?: Action) {
 
   const key = `${action.type}_${action.id}`
   if (actionTriggerList.value.includes(key))
-    createNotification({ message: '动作触发提示', sound: 'tip', iconUrl: getActionIcon(action) })
+    createNotification({ message: 'アクション通知', sound: 'tip', iconUrl: getActionIcon(action) })
 }
 
 export function toggleActionTrigger(action: Action) {

@@ -5,12 +5,12 @@ export function setupContextMenuListener() {
 
   chrome.contextMenus.onClicked.addListener(async (info, tab) => {
     if (!isGamePage(tab?.url)) {
-      createNotification({ message: '请在游戏页面进行操作' })
+      createNotification({ message: 'ゲーム画面で操作してください' })
       return
     }
 
     if (!tab?.id) {
-      createNotification({ message: '请在游戏页面进行操作' })
+      createNotification({ message: 'ゲーム画面で操作してください' })
       return
     }
 
@@ -28,17 +28,17 @@ export function setupContextMenuListener() {
           const itemKey = imgSrcToKey(info.srcUrl)
 
           if (!itemKey) {
-            createNotification({ message: '该物品无法添加' })
+            createNotification({ message: 'このアイテムは追加できません' })
             return
           }
           if (notificationItem.value.includes(itemKey)) {
-            createNotification({ message: '该物品已在提醒列表中' })
+            createNotification({ message: 'このアイテムは既に追加されています' })
             return
           }
 
           notificationItem.value.push(itemKey)
           createNotification({
-            message: '添加成功',
+            message: '追加しました',
             iconUrl: `https://prd-game-a-granbluefantasy.akamaized.net/assets/img/sp/assets${itemKey}`,
             sound: 'tip',
           })

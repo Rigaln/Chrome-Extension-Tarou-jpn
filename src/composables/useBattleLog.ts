@@ -71,12 +71,12 @@ export function handleAttackResultJson(type: string, data: AttackResultJson, pay
   const scenario = data.scenario
   const isWin = scenario.some(item => item.cmd === 'win' && item.is_last_raid)
   if (isWin && notificationSetting.value.battleWin) {
-    createNotification({ message: `战斗结束`, sound: 'win' })
+    createNotification({ message: `バトル終了`, sound: 'win' })
   }
 
   const isLose = scenario.some(item => item.cmd === 'lose')
   if (isLose && notificationSetting.value.battleLose)
-    createNotification({ message: `队伍全灭`, sound: 'lose' })
+    createNotification({ message: `全滅しました`, sound: 'lose' })
 
   const currentRaid = battleRecord.value.find(b => String(b.raid_id) === battleInfo.value.bossInfo?.battleId)
 
@@ -406,17 +406,17 @@ function recordRaidInfo(data: BattleStartJson) {
       use_ability_count: 0,
       use_special_skill_count: 0,
       damage: {
-        total: { comment: '总计', value: 0 },
-        attack: { comment: '通常攻击&反击', value: 0 },
-        ability: { comment: '技能伤害', value: 0 },
-        special: { comment: '奥义伤害', value: 0 },
-        other: { comment: '其他', value: 0 },
+        total: { comment: '合計', value: 0 },
+        attack: { comment: '通常攻撃・反撃', value: 0 },
+        ability: { comment: 'アビリティダメージ', value: 0 },
+        special: { comment: '奥義ダメージ', value: 0 },
+        other: { comment: 'その他', value: 0 },
       },
       damageTaken: {
-        total: { comment: '总计', value: 0 },
-        attack: { comment: '通常攻击&反击', value: 0 },
-        super: { comment: '特动', value: 0 },
-        other: { comment: '其他', value: 0 },
+        total: { comment: '合計', value: 0 },
+        attack: { comment: '通常攻撃・反撃', value: 0 },
+        super: { comment: '特殊技・特殊行動', value: 0 },
+        other: { comment: 'その他', value: 0 },
       },
       condition: {
         buff: mergeCondition(cur.condition),
@@ -490,7 +490,7 @@ function handleDamageStatistic(resultType: string, data: AttackResultJson | Batt
 
       const hitQuestSetting = questSetting.value.find(q => q.questId === currentRaid.quest_id)
       if (resultType === 'normal' && notificationSetting.value.pointReach && hitQuestSetting?.point && currentRaid.point! >= hitQuestSetting.point) {
-        createNotification({ message: '到线啦!!!', sound: 'warning' })
+        createNotification({ message: '目標貢献度に到達しました！', sound: 'warning' })
       }
     }
 

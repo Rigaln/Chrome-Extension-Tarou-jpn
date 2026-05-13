@@ -204,7 +204,7 @@ export async function unpack(parcel: string) {
     )
 
     sampoInfo.value = {
-      areaName: `${progressSampoInfo.area_name} 线路${progressSampoInfo.route_id}`,
+      areaName: `${progressSampoInfo.area_name} ルート${progressSampoInfo.route_id}`,
       remainTime: Date.now() + progressSampoInfo.remain_time * 1000,
       recoveryRemainTime: Date.now() + progressSampoInfo.captain_info.recovery_remain_time * 1000,
       currentStamina: progressSampoInfo.captain_info.current_stamina,
@@ -966,11 +966,11 @@ function handleResultContent(responseData: any) {
     return
 
   if (result_data.appearance?.is_quest && !result_data.appearance?.is_retry && notificationSetting.value.appearanceQuest)
-    createNotification({ message: 'Hell提醒', sound: 'hell' })
+    createNotification({ message: 'HELL出現！', sound: 'hell' })
 
   if (result_data.replicard?.has_occurred_event && notificationSetting.value.replicardEvent) {
     createNotification({
-      message: '沙盒宝箱提醒',
+      message: 'セフィラボックス出現！',
       iconUrl: 'https://prd-game-a-granbluefantasy.akamaized.net/assets/img/sp/assets/enemy/s/4200151.png',
       sound: 'hell',
     })
@@ -1231,7 +1231,7 @@ function handleResultContent(responseData: any) {
     const current = Number(item.number)
     const goal = Number(item.registration_number)
     if (goal > 0 && goal <= current)
-      createNotification({ message: `${item.name}达到目标数量`, sound: 'warning' })
+      createNotification({ message: `${item.name}が目標数に到達しました`, sound: 'warning' })
   })
 }
 

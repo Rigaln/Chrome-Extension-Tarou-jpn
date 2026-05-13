@@ -3,7 +3,7 @@ export function setupActionListener() {
 
   chrome.action.onClicked.addListener((tab) => {
     if (!isGamePage(tab?.url)) {
-      createNotification({ message: '请在游戏页面进行操作' })
+      createNotification({ message: 'ゲーム画面で操作してください' })
       return
     }
     openSidePanel(tab)
