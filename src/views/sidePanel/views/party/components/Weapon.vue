@@ -24,17 +24,17 @@ function getSkillAlias(weapon: BuildWeapon) {
   return hitWeaponSkill.list.find(skill => description.includes(skill.comment) || description.includes(skill.comment_en))?.alias
 }
 
-// 判断是不是U武(13)
+// U武器(13)かどうかを判定
 function isUW(weapon: BuildWeapon) {
   return weapon.seriesId === 13
 }
 
-// 判断是不是法武(3)
+// 終末武器(3)かどうかを判定
 function isFW(weapon: BuildWeapon) {
   return weapon.seriesId === 3
 }
 
-// 判断是不是法武(3)或者U武(13)
+// 終末武器(3)またはU武器(13)かどうかを判定
 function isFWorUW(weapon: BuildWeapon) {
   return isFW(weapon) || isUW(weapon)
 }
