@@ -64,22 +64,22 @@ function handleCopyBuild() {
     return
 
   if (!currentDeck.value)
-    return ElMessage.warning('请先切换到游戏里的编成界面')
+    return ElMessage.warning('編成画面に移動してください')
 
   ElMessageBox.confirm(
-    '确认使用当前队伍配置进行上传?<br>(可在游戏中切换队伍)',
+    '現在のパーティ構成でアップロードしますか？<br>(ゲーム内でパーティを切り替え可能です)',
     '通知',
     {
       dangerouslyUseHTMLString: true,
-      confirmButtonText: '确认',
-      cancelButtonText: '取消',
+      confirmButtonText: '確認',
+      cancelButtonText: 'キャンセル',
       type: 'warning',
     },
   )
     .then(() => {
       loading.value = true
       uploadBuild({ ...processData(), anonymous: anonymous.value }).then((data) => {
-        ElMessage.success('上传成功')
+        ElMessage.success('アップロード完了')
         const record = battleRecord.value.find(record => record.raid_id === currentRecord.value?.raid_id)
         if (record)
           record.key = data.key
@@ -119,7 +119,7 @@ function processData(): BattleExport {
 
 function copyLink(key: string) {
   if (copy(`https://gbf.pub/build?key=${key}`))
-    ElMessage.success('已复制分享链接')
+    ElMessage.success('共有リンクをコピーしました')
 }
 </script>
 
@@ -127,19 +127,19 @@ function copyLink(key: string) {
   <div flex flex-col flex-wrap gap-10px>
     <el-card v-for="data, idx in battleRecord" :key="idx" w-300px body-style="padding: 5px !important">
       <el-descriptions size="small" direction="vertical" :column="3" border>
-        <el-descriptions-item label="副本" label-width="60" :rowspan="2" align="center">
+        <el-descriptions-item label="クエスト" label-width="60" :rowspan="2" align="center">
           <img h-44px w-44px :src="getBossImg('enemy', data.imgId!, 's')">
         </el-descriptions-item>
-        <el-descriptions-item label="伤害" label-width="113" align="center">
+        <el-descriptions-item label="合計ダメージ" label-width="113" align="center">
           {{ data.damage }}
         </el-descriptions-item>
-        <el-descriptions-item label="操作时长/跑速" align="center">
+        <el-descriptions-item label="操作時間/速度" align="center">
           {{ getRealTimeSpeed(data) }}
         </el-descriptions-item>
-        <el-descriptions-item label="贡献" align="center">
+        <el-descriptions-item label="貢献度" align="center">
           {{ data.point ? Math.floor(data.point).toLocaleString() : '-' }}
         </el-descriptions-item>
-        <el-descriptions-item label="回合数" align="center">
+        <el-descriptions-item label="ターン数" align="center">
           {{ data.turn }}
         </el-descriptions-item>
       </el-descriptions>
@@ -150,16 +150,16 @@ function copyLink(key: string) {
 
         <div fc>
           <TheButton v-if="data.key" @click="copyLink(data.key)">
-            分享
+            共有
           </TheButton>
           <TheButton v-else @click="handleCommand('upload', data)">
-            上传
+            アップロード
           </TheButton>
           <TheButton @click="handleCommand('detail', data)">
-            详情
+            詳細
           </TheButton>
           <TheButton @click="handleCommand('export', data)">
-            导出
+            エクスポート
           </TheButton>
         </div>
       </div>
@@ -175,29 +175,29 @@ function copyLink(key: string) {
           <div v-if="currentDeck" my-20px flex items-center justify-between>
             <div fc gap-4>
               <div fc gap-2>
-                匿名上传
+                匿名でアップロード
                 <el-switch
                   v-model="anonymous"
                   inline-prompt
-                  active-text="是"
-                  inactive-text="否"
+                  active-text="はい"
+                  inactive-text="いいえ"
                 />
               </div>
               <div fc gap-2>
-                FA
+                フルオート
                 <el-switch
                   v-model="currentRecord!.isFa"
                   inline-prompt
-                  active-text="是"
-                  inactive-text="否"
+                  active-text="はい"
+                  inactive-text="いいえ"
                 />
               </div>
             </div>
             <TheButton :loading="loading" @click="handleCopyBuild">
-              上传配置信息
+              構成情報をアップロード
             </TheButton>
           </div>
-          <el-result v-else icon="info" sub-title="切换至战斗记录所使用的的队伍" />
+          <el-result v-else icon="info" sub-title="戦闘記録で使用したパーティに切り替えてください" />
 
           <div v-if="currentDeck" m-auto w-300px flex flex-col gap-10px>
             <Npc :leader="currentDeck.leader" :npcs="currentDeck.npcs" :priority="currentDeck.priority" />
