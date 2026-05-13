@@ -10,21 +10,21 @@ const { isBuild = false, priority } = defineProps<{
 }>()
 
 const NPC_AROUSAL_FORM: Record<string, string> = {
-  1: '平衡',
-  2: '攻击',
+  1: 'バランス',
+  2: '攻撃',
   3: '防御',
-  4: '连击',
+  4: '連続攻撃',
 }
 
 const questId = computed(() => priority.slice(0, 6))
 
 function updateNpcFilter(masterId: number) {
   if (buildNpcFilter.value.includes(masterId)) {
-    ElMessage.success('已标记')
+    ElMessage.success('ブックマーク済み')
   }
   else {
     buildNpcFilter.value.push(masterId)
-    ElMessage.success('标记成功')
+    ElMessage.success('ブックマークしました')
   }
 }
 
@@ -98,7 +98,7 @@ function goWiki(masterId: number) {
 
           <div class="text-12px text-#f2eee2" w-250px bg-black pb-2 pt-1 leading-none>
             <div v-if="(!npc.exlb || npc.exlb.length === 0) && (!npc.artifact || npc.artifact.length === 0) " text-center>
-              未读取该角色信息
+              キャラクター情報が読み込まれていません
             </div>
             <template v-for="exlb, idx in npc.exlb" :key="idx">
               <div class="prt-extra-lb-title" my-1>

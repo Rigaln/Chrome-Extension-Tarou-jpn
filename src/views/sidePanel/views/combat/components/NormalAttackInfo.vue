@@ -10,13 +10,13 @@ defineProps<{ normalAttackInfo: NormalAttackInfo }>()
       {{ `hit: ${normalAttackInfo.hit}` }}
     </el-tag>
     <el-tag type="warning" effect="dark" size="small">
-      {{ `奥伤${normalAttackInfo.chain ? `(${normalAttackInfo.chain}c)` : ''}: ${normalAttackInfo.special.toLocaleString()}` }}
+      {{ `奥義${normalAttackInfo.chain ? `(${normalAttackInfo.chain}c)` : ''}: ${normalAttackInfo.special.toLocaleString()}` }}
     </el-tag>
     <el-tag type="success" effect="dark" size="small">
-      {{ `技伤: ${normalAttackInfo.ability.toLocaleString()}` }}
+      {{ `アビダメ: ${normalAttackInfo.ability.toLocaleString()}` }}
     </el-tag>
     <el-tag type="danger" effect="dark" size="small">
-      {{ `总伤害: ${normalAttackInfo.total.toLocaleString()}` }}
+      {{ `合計ダメージ: ${normalAttackInfo.total.toLocaleString()}` }}
     </el-tag>
   </div>
 </template>
