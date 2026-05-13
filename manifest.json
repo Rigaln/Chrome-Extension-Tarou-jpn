@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Tarou (日本語版)",
-  "version": "3.5.0",
+  "version": "3.4.7",
   "description": "extension for gbf",
   "icons": {
     "16": "./assets/icon-16.png",

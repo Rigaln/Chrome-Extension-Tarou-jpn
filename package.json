@@ -1,7 +1,7 @@
 {
   "name": "chrome-extension-tarou",
   "type": "module",
-  "version": "3.5.0",
+  "version": "3.4.7",
   "packageManager": "pnpm@10.33.2",
   "scripts": {
     "dev": "vite --port 1234 --open",
