@@ -11,9 +11,9 @@ const eventInfo = computed(() => eventList.value.find(event => event.type === 'i
     <template #header>
       <div flex justify-between>
         <div>
-          转世外传({{ eventInfo.count }}点数)
+          アーカルムの転世外伝({{ eventInfo.count }}トークン)
         </div>
-        <el-tooltip content="最后更新时间" placement="top">
+        <el-tooltip content="最終更新日時" placement="top">
           {{ formatEventDate(eventInfo.updateTime) }}
         </el-tooltip>
       </div>

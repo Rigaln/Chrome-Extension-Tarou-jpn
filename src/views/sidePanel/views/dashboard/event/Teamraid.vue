@@ -9,12 +9,12 @@ const eventInfo = computed(() => eventList.value.find(event => event.type === 't
 const token = computed(() => eventInfo.value.additional.hasSpReward ? eventInfo.value.additional.gachaPoint : eventInfo.value.additional.gachaPoint + eventInfo.value.additional.honor / 1000000 * 60)
 
 function onSetTarget() {
-  ElMessageBox.prompt('请输入目标贡献值', {
-    confirmButtonText: '确认',
-    cancelButtonText: '取消',
+  ElMessageBox.prompt('目標貢献度を入力してください', {
+    confirmButtonText: '確認',
+    cancelButtonText: 'キャンセル',
     inputPattern: /^\d+$/,
-    inputErrorMessage: '请输入正确的数字',
-    inputPlaceholder: eventInfo.value.additional.targetHonor ? `当前目标: ${eventInfo.value.additional.targetHonor.toLocaleString()}` : '',
+    inputErrorMessage: '正しい数値を入力してください',
+    inputPlaceholder: eventInfo.value.additional.targetHonor ? `現在の目標: ${eventInfo.value.additional.targetHonor.toLocaleString()}` : '',
   })
     .then(({ value }) => {
       eventInfo.value.additional.targetHonor = Number(value)
@@ -28,9 +28,9 @@ function onSetTarget() {
     <template #header>
       <div flex justify-between>
         <div>
-          古战场({{ getEventGachaBoxNum({ eventType: eventInfo.type, currentToken: token, drawnBox: eventInfo.additional.drawnBox }) }}箱)
+          決戦！星の古戦場({{ getEventGachaBoxNum({ eventType: eventInfo.type, currentToken: token, drawnBox: eventInfo.additional.drawnBox }) }}箱)
         </div>
-        <el-tooltip content="最后更新时间" placement="top">
+        <el-tooltip content="最終更新日時" placement="top">
           {{ formatEventDate(eventInfo.updateTime) }}
         </el-tooltip>
       </div>
@@ -58,9 +58,9 @@ function onSetTarget() {
             {{ eventInfo.additional.honor.toLocaleString() }}
           </div>
         </div>
-        <el-tooltip content="点击设置贡献目标，显示差值" placement="top">
+        <el-tooltip content="クリックして目標貢献度を設定し、差分を表示" placement="top">
           <TheButton link @click="onSetTarget">
-            {{ eventInfo.additional.targetHonor ? (eventInfo.additional.targetHonor - eventInfo.additional.honor).toLocaleString() : '设置目标' }}
+            {{ eventInfo.additional.targetHonor ? (eventInfo.additional.targetHonor - eventInfo.additional.honor).toLocaleString() : '目標設定' }}
           </TheButton>
         </el-tooltip>
       </div>

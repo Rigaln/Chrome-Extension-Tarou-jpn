@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { value, placeholder = '点击设置' } = defineProps<{
+const { value, placeholder = 'クリックして設定' } = defineProps<{
   value?: number
   placeholder?: string
 }>()
@@ -43,7 +43,7 @@ function saveEdit() {
       ref="inputRef"
       v-model="inputValue"
       type="text"
-      placeholder="请输入数字"
+      placeholder="数値を入力してください"
       size="small"
       @input="handleInput"
       @blur="saveEdit"

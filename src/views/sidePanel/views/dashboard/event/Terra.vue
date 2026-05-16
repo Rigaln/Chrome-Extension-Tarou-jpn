@@ -22,9 +22,9 @@ const loopNum = computed(() => {
     <template #header>
       <div flex justify-between>
         <div>
-          十天众战记({{ loopNum }}周目)
+          十天衆戦記({{ loopNum }}周目)
         </div>
-        <el-tooltip content="最后更新时间" placement="top">
+        <el-tooltip content="最終更新日時" placement="top">
           {{ formatEventDate(eventInfo.updateTime) }}
         </el-tooltip>
       </div>

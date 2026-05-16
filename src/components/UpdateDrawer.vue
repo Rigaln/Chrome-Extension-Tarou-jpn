@@ -17,7 +17,7 @@ function getDownloadUrl() {
       <div fc gap-2 text-15px font-bold>
         <div i-openmoji:alien-monster />
         <div>
-          发现新版本 {{ info.version }}
+          新バージョンを発見: {{ info.version }}
         </div>
         <div i-openmoji:alien-monster />
       </div>
@@ -26,10 +26,10 @@ function getDownloadUrl() {
       </div>
       <div flex justify-end>
         <TheButton @click="checkChangelog">
-          更新日志
+          更新履歴
         </TheButton>
         <TheButton @click="getDownloadUrl">
-          下载插件
+          プラグインをダウンロード
         </TheButton>
       </div>
     </div>
