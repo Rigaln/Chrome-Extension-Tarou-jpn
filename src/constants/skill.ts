@@ -1,12 +1,12 @@
 export const weaponSkill = [
   {
     series_id: ['3'],
-    name: '法武插件',
+    name: '終末の神器',
     type: 'skill3',
     list: [{
       id: '4048',
       name: '強壮のペンデュラム',
-      alias: '浑身',
+      alias: '渾身',
       comment: 'キャラのHPが多いほど攻撃力が上昇(大)',
       comment_en: 'allies\' ATK based on how high HP is',
     }, {
@@ -18,19 +18,19 @@ export const weaponSkill = [
     }, {
       id: '4050',
       name: '闘争のペンデュラム',
-      alias: '连击',
+      alias: '連撃',
       comment: 'キャラの連続攻撃確率上昇(中)',
       comment_en: 'allies\' multiattack rate',
     }, {
       id: '4051',
       name: '隆盛のペンデュラム',
-      alias: '进境',
+      alias: '進境',
       comment: '属性攻撃力が上昇(大)',
       comment_en: 'ATK based on number of turns passed',
     }, {
       id: '6153',
       name: '技錬のチェイン',
-      alias: '暴击',
+      alias: '技巧',
       comment: 'キャラの攻撃力上昇(中)/クリティカル確率上昇(中)',
       comment_en: 'allies\' ATK and critical hit rate',
     }, {
@@ -42,13 +42,13 @@ export const weaponSkill = [
     }, {
       id: '6155',
       name: '謳歌のチェイン',
-      alias: '讴歌',
+      alias: '謳歌',
       comment: 'キャラの奥義性能UP(大)/チェインバースト性能UP(大)',
       comment_en: 'allies\' C.A. specs and chain burst specs',
     }, {
       id: '6156',
       name: '誘惑のチェイン',
-      alias: '诱惑',
+      alias: '誘惑',
       comment: 'バトル開始時に様々な強化効果/最大HP-30%',
       comment_en: 'At start of battle: Various buffs to all allies / 30% hit to max HP',
     }, {
@@ -66,32 +66,32 @@ export const weaponSkill = [
     }, {
       id: '6159',
       name: '虚詐のチェイン',
-      alias: '虚诈',
+      alias: '虚詐',
       comment: '自属性追撃効果/奥義ゲージ上昇量大幅DOWN',
       comment_en: 'Bonus Elemental DMG effect / Sharp hit to charge bar gain',
     }, {
       id: '14005',
       name: '絶涯のペンデュラム',
-      alias: '极破',
+      alias: '極破',
       comment: '通常攻撃の与ダメージUP',
       comment_en: 'Amplify normal attack DMG',
     }, {
       id: '14006',
       name: '窮理のペンデュラム',
-      alias: '极技',
+      alias: '極技',
       comment: 'アビリティの与ダメージUP',
       comment_en: 'Amplify skill DMG',
     }, {
       id: '14007',
       name: '天髄のペンデュラム',
-      alias: '极奥',
+      alias: '極奥',
       comment: '奥義の与ダメージUP',
       comment_en: 'Amplify chain burst DMG',
     }],
   },
   {
     series_id: ['13'],
-    name: 'U武插件',
+    name: 'オメガウェポン',
     type: 'skill3',
     list: [{
       id: '6549',
@@ -102,7 +102,7 @@ export const weaponSkill = [
     }, {
       id: '6550',
       name: 'ガフスキー【ディオ】',
-      alias: '回复',
+      alias: '回復',
       comment: '回復上限上昇',
       comment_en: 'Boost to all allies\' healing cap',
     }, {
@@ -114,14 +114,14 @@ export const weaponSkill = [
     }, {
       id: '6552',
       name: 'ガフスキー【テーセラ】',
-      alias: '奥义',
+      alias: '奥義',
       comment: '奥義ゲージ上昇量UP',
       comment_en: 'Boost to all allies\' charge bar gain',
     }],
   },
   {
     series_id: ['27', '40'],
-    name: '龙武插件',
+    name: 'ドラゴニックウェポン',
     type: 'skill2',
     list: [{
       id: '4995',
@@ -132,43 +132,43 @@ export const weaponSkill = [
     }, {
       id: '4996',
       name: '炎獄のテルマ',
-      alias: '火减轻',
+      alias: '火軽減',
       comment: '火属性ダメージ軽減',
       comment_en: 'Fire DMG reduction',
     }, {
       id: '4997',
       name: '深海のテルマ',
-      alias: '水减轻',
+      alias: '水軽減',
       comment: '水属性ダメージ軽減',
       comment_en: 'Water DMG reduction',
     }, {
       id: '4998',
       name: '巨岩のテルマ',
-      alias: '土减轻',
+      alias: '土軽減',
       comment: '土属性ダメージ軽減',
       comment_en: 'Earth DMG reduction',
     }, {
       id: '4999',
       name: '暴風のテルマ',
-      alias: '风减轻',
+      alias: '風軽減',
       comment: '風属性ダメージ軽減',
       comment_en: 'Wind DMG reduction',
     }, {
       id: '5000',
       name: '後光のテルマ',
-      alias: '光减轻',
+      alias: '光軽減',
       comment: '光属性ダメージ軽減',
       comment_en: 'Light DMG reduction',
     }, {
       id: '5001',
       name: '闇禍のテルマ',
-      alias: '暗减轻',
+      alias: '闇軽減',
       comment: '闇属性ダメージ軽減',
       comment_en: 'Dark DMG reduction',
     }, {
       id: '8606',
       name: '燦護のテルマ',
-      alias: '血量',
+      alias: 'HP',
       comment: 'HPを10000上昇',
       comment_en: 'allies\' HP by 10,000',
     }, {
@@ -181,13 +181,13 @@ export const weaponSkill = [
   },
   {
     series_id: ['44'],
-    name: '破坏插件',
+    name: 'ワールド武器',
     type: 'skill3',
     list: [
       {
         id: '100885',
         name: '崩焉のアンクレット',
-        alias: '神击',
+        alias: '神撃',
         comment: '通常攻撃の与ダメージ上昇',
         comment_en: 'Supplement normal attack DMG',
       },

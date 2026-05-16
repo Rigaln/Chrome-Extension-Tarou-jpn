@@ -63,13 +63,13 @@ export function formatEventDate(timestamp: number): string {
 
   let prefix = ''
   if (dayjs().subtract(1, 'day').isSame(dayjs(timestamp), 'day')) {
-    prefix = '昨天 '
+    prefix = '昨日 '
   }
   else if (dayjs().subtract(2, 'day').isSame(dayjs(timestamp), 'day')) {
-    prefix = '前天 '
+    prefix = '一昨日 '
   }
   else if (dayjs().isAfter(dayjs(timestamp), 'day')) {
-    prefix = `${dayjs(timestamp).format('MM-DD')} `
+    prefix = `${dayjs(timestamp).format('MM/DD')} `
   }
 
   return `${prefix}${time}`

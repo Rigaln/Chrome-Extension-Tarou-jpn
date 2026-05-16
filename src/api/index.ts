@@ -2,7 +2,7 @@ import type { BuildResponse, DropInfo, StartJsonBoss, Stat } from 'api'
 import type { Quest } from 'extension'
 import request from './request'
 
-// 更新引继码
+// 引き継ぎコードの更新
 export function updateCode(data: { code: string }) {
   return request<{ code: string }>('/ext/code', {
     method: 'post',
@@ -10,7 +10,7 @@ export function updateCode(data: { code: string }) {
   })
 }
 
-// 发送掉落信息
+// ドロップ情報の送信
 export function sendDropInfo(data: DropInfo) {
   return request('/ext/drop', {
     method: 'post',
@@ -18,7 +18,7 @@ export function sendDropInfo(data: DropInfo) {
   })
 }
 
-// 批量发送掉落信息
+// ドロップ情報の一括送信
 export function sendMultiDropInfo(data: DropInfo[]) {
   return request('/ext/multiDrop', {
     method: 'post',
@@ -26,7 +26,7 @@ export function sendMultiDropInfo(data: DropInfo[]) {
   })
 }
 
-// 发送startJson中的boss信息
+// startJsonのボス情報を送信
 export function sendBossInfo(data: StartJsonBoss) {
   return request('/ext/startJson', {
     method: 'post',
@@ -34,14 +34,14 @@ export function sendBossInfo(data: StartJsonBoss) {
   })
 }
 
-// 获取副本信息
+// クエスト情報の取得
 export function listQuest() {
   return request<{ data: (Omit<Quest, 'visible'> & { deprecated?: boolean })[] }>('/ext/quest', {
     method: 'get',
   })
 }
 
-// 获取掉落统计信息
+// ドロップ統計情報の取得
 export function listDrop(questIds: string[]) {
   return request<{ data: Stat[] }>('/ext/stat', {
     method: 'post',
@@ -49,7 +49,7 @@ export function listDrop(questIds: string[]) {
   })
 }
 
-// 上传配置
+// 編成情報のアップロード
 export function uploadBuild(data: any) {
   return request<{ key: string }>('/ext/build', {
     method: 'post',
@@ -57,7 +57,7 @@ export function uploadBuild(data: any) {
   })
 }
 
-// 查询配置
+// 編成情報の検索
 export function listBuild(data: { questId: string, npcFilter: number[] }) {
   return request<{ data: { list: BuildResponse[], total: number } }>('/ext/getBuild', {
     method: 'post',
@@ -65,7 +65,7 @@ export function listBuild(data: { questId: string, npcFilter: number[] }) {
   })
 }
 
-// 上传用户插件配置
+// ユーザー設定のアップロード
 export function setConfig(data: any) {
   return request('/ext/config/set', {
     method: 'post',
@@ -73,7 +73,7 @@ export function setConfig(data: any) {
   })
 }
 
-// 查询用户插件配置
+// ユーザー設定の取得
 export function getConfig() {
   return request<{ data: any }>('/ext/config/get', {
     method: 'post',

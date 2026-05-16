@@ -39,7 +39,7 @@ export const defaultWidget = [
   { key: 'Event', name: 'イベント情報', visible: true },
   { key: 'TreasureMonitor', name: '素材監視', visible: true },
   { key: 'DailyCost', name: 'デイリー統計', visible: true },
-  { key: 'SkipQuest', name: 'スキップクエスト', visible: true },
+  { key: 'SkipQuest', name: 'Proクエスト', visible: true },
   { key: 'Sampo', name: '探検隊', visible: true },
 ]
 

@@ -67,15 +67,15 @@ function isOneRow(player: DisplayPlayer) {
       <el-switch
         v-model="onlyShowMainPlayer"
         size="small"
-        active-text="前排"
-        inactive-text="全部"
+        active-text="フロント"
+        inactive-text="全員"
         inline-prompt
         style="--el-switch-off-color: #0d9488"
       >
         只显示标记状态
       </el-switch>
       <el-checkbox v-model="onlyShowSpecBuff" :border="true" size="small">
-        只显示标记状态
+        マークのみ表示
       </el-checkbox>
     </div>
 
